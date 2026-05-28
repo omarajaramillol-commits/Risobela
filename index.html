@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Risobela - Arroz Premium Ecuatoriano</title>
-<meta name="description" content="Risobela nace del campo ecuatoriano. Cada grano es seleccionado para que tu mesa tenga lo mejor, siempre.">
+<meta name="description" content="Arroz Risobela se distingue por su sabor profundo y aromático gracias a su proceso de envejecido, resaltando sus notas naturales.">
 <meta property="og:title" content="Risobela - Arroz Premium Ecuatoriano">
-<meta property="og:description" content="Risobela nace del campo ecuatoriano. Cada grano es seleccionado para que tu mesa tenga lo mejor, siempre.">
+<meta property="og:description" content="Arroz Risobela se distingue por su sabor profundo y aromático gracias a su proceso de envejecido, resaltando sus notas naturales.">
 <meta property="og:image" content="risobela_logo.png">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://risobela.vercel.app/risobela_logo.png">
@@ -765,6 +765,185 @@
     footer{padding:40px 24px;flex-direction:column;gap:30px;text-align:center}
     .footer-links{flex-wrap:wrap;justify-content:center;gap:20px}
   }
+
+  /* RECETA LINKS */
+  .receta-link {
+    color: var(--gold);
+    font-size: 13.5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 16px;
+    display: inline-flex;
+    align-items: center;
+    transition: color 0.3s ease;
+  }
+  .receta-card:hover .receta-link {
+    color: var(--brown-light);
+  }
+  .receta-card:hover .receta-link svg {
+    transform: translateX(4px);
+  }
+
+  /* MODAL RECETAS */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(35, 17, 5, 0.7);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 200;
+    padding: 20px;
+  }
+  .modal-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+  .modal-content {
+    background: var(--cream);
+    max-width: 680px;
+    width: 100%;
+    max-height: 85vh;
+    border-radius: 16px;
+    overflow-y: auto;
+    border: 1px solid rgba(212,175,55,0.25);
+    box-shadow: 0 25px 60px rgba(35,17,5,0.4);
+    transform: translateY(30px);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    padding: 40px;
+  }
+  .modal-overlay.active .modal-content {
+    transform: translateY(0);
+  }
+  .modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(35,17,5,0.05);
+    border: none;
+    font-size: 24px;
+    color: var(--brown-dark);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+  }
+  .modal-close:hover {
+    background: var(--brown-dark);
+    color: var(--cream);
+    transform: rotate(90deg);
+  }
+  .modal-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    color: var(--brown-dark);
+    font-weight: 700;
+    margin-bottom: 8px;
+    border-bottom: 2px solid rgba(201,151,58,0.2);
+    padding-bottom: 12px;
+  }
+  .modal-meta {
+    display: flex;
+    gap: 20px;
+    font-size: 13.5px;
+    color: var(--brown-light);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 24px;
+  }
+  .modal-section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    color: var(--brown-mid);
+    font-weight: 600;
+    margin-top: 24px;
+    margin-bottom: 12px;
+  }
+  .modal-ingredients-group {
+    background: var(--white);
+    padding: 18px 22px;
+    border-radius: 8px;
+    border-left: 4px solid var(--gold);
+    margin-bottom: 16px;
+  }
+  .modal-ingredients-group h5 {
+    font-size: 14.5px;
+    color: var(--brown-dark);
+    font-weight: 700;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .modal-ingredients-list {
+    list-style: none;
+    padding-left: 0;
+  }
+  .modal-ingredients-list li {
+    font-size: 14.5px;
+    color: var(--text-muted);
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(35,17,5,0.04);
+    display: flex;
+    align-items: center;
+  }
+  .modal-ingredients-list li::before {
+    content: "•";
+    color: var(--gold);
+    font-size: 18px;
+    font-weight: bold;
+    display: inline-block;
+    width: 14px;
+    margin-right: 4px;
+  }
+  .modal-prep-step {
+    margin-bottom: 18px;
+  }
+  .modal-prep-step-title {
+    font-size: 15px;
+    color: var(--brown-dark);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .modal-prep-step-details {
+    list-style: none;
+    padding-left: 0;
+  }
+  .modal-prep-step-details li {
+    font-size: 14.5px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    padding: 5px 0 5px 16px;
+    position: relative;
+  }
+  .modal-prep-step-details li::before {
+    content: "›";
+    position: absolute;
+    left: 2px;
+    color: var(--gold);
+    font-size: 18px;
+    line-height: 1.4;
+  }
+  @media(max-width: 480px) {
+    .modal-content {
+      padding: 24px 16px;
+    }
+    .modal-title {
+      font-size: 28px;
+    }
+  }
 </style>
 <script>
   const WA_NUMBER = "593995198779";
@@ -801,7 +980,7 @@
       Arroz Premium Ecuatoriano
     </span>
     <h1 class="hero-title">Donde hay <span>Risobela</span>, hay amor</h1>
-    <p class="hero-subtitle">Risobela nació en el campo ecuatoriano. Cada grano seleccionado para que tu mesa tenga lo mejor, siempre.</p>
+    <p class="hero-subtitle">Arroz Risobela se distingue por su sabor profundo y aromático gracias a su proceso de envejecido, resaltando sus notas naturales.</p>
     <div class="hero-btns">
       <a href="javascript:void(0)" onclick="window.open(`https://wa.me/${WA_NUMBER}?text=${WA_MSG}`, '_blank')" class="btn-primary" style="display:inline-flex;align-items:center;">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:8px"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
@@ -815,12 +994,12 @@
         <div class="stat-label">Ecuatoriano</div>
       </div>
       <div class="stat-item">
-        <div class="stat-num">Grano</div>
-        <div class="stat-label">Entero selecto</div>
+        <div class="stat-num">Semilla</div>
+        <div class="stat-label">Certificada</div>
       </div>
       <div class="stat-item">
-        <div class="stat-num">Familia</div>
-        <div class="stat-label">Desde el campo</div>
+        <div class="stat-num">Envejecido</div>
+        <div class="stat-label">Naturalmente</div>
       </div>
     </div>
   </div>
@@ -830,13 +1009,13 @@
 </section>
 
 <div class="trust-bar">
-  <div class="trust-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;color:var(--gold)"><polyline points="20 6 9 17 4 12"></polyline></svg> Entrega a domicilio</div>
+  <div class="trust-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;color:var(--gold)"><polyline points="20 6 9 17 4 12"></polyline></svg> Envío a domicilio</div>
   <div class="trust-dot"></div>
-  <div class="trust-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;color:var(--gold)"><polyline points="20 6 9 17 4 12"></polyline></svg> Producto 100% ecuatoriano</div>
+  <div class="trust-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;color:var(--gold)"><polyline points="20 6 9 17 4 12"></polyline></svg> Calidad ecuatoriana premium</div>
   <div class="trust-dot"></div>
-  <div class="trust-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;color:var(--gold)"><polyline points="20 6 9 17 4 12"></polyline></svg> Grano entero premium</div>
+  <div class="trust-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;color:var(--gold)"><polyline points="20 6 9 17 4 12"></polyline></svg> Grano largo seleccionado</div>
   <div class="trust-dot"></div>
-  <div class="trust-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;color:var(--gold)"><polyline points="20 6 9 17 4 12"></polyline></svg> Precio directo del productor</div>
+  <div class="trust-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;color:var(--gold)"><polyline points="20 6 9 17 4 12"></polyline></svg> Calidad que se nota en cada plato</div>
 </div>
 
 <section class="about" id="nosotros">
@@ -857,9 +1036,9 @@
     </div>
     <div class="about-text reveal">
       <p class="section-label">Quiénes somos</p>
-      <h2 class="section-title" style="font-size:32px">Nuestra Historia</h2>
-      <p>Risobela nace del corazón de nuestros campos para llegar al tuyo. Cada grano es un gesto de amor, pensado para acompañar los momentos que se convierten en recuerdos alrededor de la mesa. Como productores sabemos que alimentar a tu familia es sembrar cariño todos los días.</p>
-      <p style="font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:600; font-style:italic; color:var(--gold); margin-top:24px; text-align:center;">Donde hay amor, hay arroz RISOBELA</p>
+      <h2 class="section-title" style="font-size:32px">10 Años de Pasión por el Grano Perfecto</h2>
+      <p>Somos productores de arroz con 10 años de experiencia. Arroz premium de semilla certificada, seleccionado electrónicamente para ofrecer excelencia en cada grano.</p>
+      <p style="font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:600; font-style:italic; color:var(--gold); margin-top:24px; text-align:center;">Desde el campo hasta tu mesa con amor</p>
       <div class="about-values reveal-stagger">
         <div class="value-item">
           <h4>Calidad constante</h4>
@@ -917,7 +1096,7 @@
     <p class="section-sub" style="margin:0 auto;text-align:center">El arroz bueno se nota en el plato. Aquí algunas ideas para sacarle el máximo provecho.</p>
   </div>
   <div class="recetas-grid reveal-stagger">
-    <div class="receta-card">
+    <div class="receta-card" onclick="openRecipe('r1')">
       <div class="receta-img r1">
         <img src="arrozconmenestra.jpg" alt="Arroz con menestra" loading="lazy">
       </div>
@@ -925,9 +1104,10 @@
         <div class="receta-time"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:4px"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> 25 minutos</div>
         <h3 class="receta-name">Arroz con menestra</h3>
         <p class="receta-desc">El clásico ecuatoriano de todos los días. Con Risobela el grano queda suelto, perfecto y lleno de sabor.</p>
+        <span class="receta-link">Ver receta <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-left:6px; transition:transform 0.3s ease;"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
       </div>
     </div>
-    <div class="receta-card">
+    <div class="receta-card" onclick="openRecipe('r2')">
       <div class="receta-img r2">
         <img src="arrozverde.jpg" alt="Arroz verde" loading="lazy">
       </div>
@@ -935,9 +1115,10 @@
         <div class="receta-time"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:4px"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> 35 minutos</div>
         <h3 class="receta-name">Arroz verde</h3>
         <p class="receta-desc">Con hierbas frescas, ajo y cilantro. Una receta llena de color y sabor que sorprende a toda la familia.</p>
+        <span class="receta-link">Ver receta <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-left:6px; transition:transform 0.3s ease;"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
       </div>
     </div>
-    <div class="receta-card">
+    <div class="receta-card" onclick="openRecipe('r3')">
       <div class="receta-img r3">
         <img src="arrozconcamaron.jpg" alt="Arroz con camarones" loading="lazy">
       </div>
@@ -945,6 +1126,7 @@
         <div class="receta-time"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:4px"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> 45 minutos</div>
         <h3 class="receta-name">Arroz con camarones</h3>
         <p class="receta-desc">El mar y el campo en un solo plato. La combinación perfecta con camarones frescos del Ecuador.</p>
+        <span class="receta-link">Ver receta <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-left:6px; transition:transform 0.3s ease;"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
       </div>
     </div>
   </div>
@@ -1043,14 +1225,236 @@
     <a href="#contacto">Contacto</a>
   </div>
   <div class="footer-social">
-    <a href="#" class="social-btn" title="TikTok" aria-label="Síguenos en TikTok">T</a>
-    <a href="https://www.instagram.com/risobelaa?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="social-btn" target="_blank" rel="noopener noreferrer" title="Instagram" aria-label="Síguenos en Instagram">IG</a>
-    <a href="#" class="social-btn" title="Facebook" aria-label="Síguenos en Facebook">FB</a>
-    <a href="javascript:void(0)" onclick="window.open(`https://wa.me/${WA_NUMBER}`, '_blank')" class="social-btn" title="WhatsApp" aria-label="Contáctanos por WhatsApp">W</a>
+    <a href="https://www.tiktok.com/@risobela4?is_from_webapp=1&sender_device=pc" class="social-btn" target="_blank" rel="noopener noreferrer" title="TikTok" aria-label="Síguenos en TikTok">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.89-.6-4.09-1.5-.77-.6-1.39-1.39-1.81-2.3v7.8c.08 2.94-1.56 5.76-4.23 6.94-3.1 1.39-6.94.82-9.47-1.36-2.58-2.22-3.48-5.98-2.2-9.15C1.8 7.37 5.04 4.96 8.5 5.06c.02 1.43-.02 2.86.01 4.29-.87-.12-1.8.07-2.53.59-.97.71-1.4 1.95-1.12 3.14.28 1.19 1.25 2.12 2.45 2.31.75.12 1.54-.03 2.16-.48.67-.5 1.05-1.29 1.05-2.12V.02Z"/>
+      </svg>
+    </a>
+    <a href="https://www.instagram.com/risobelaa?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="social-btn" target="_blank" rel="noopener noreferrer" title="Instagram" aria-label="Síguenos en Instagram">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+      </svg>
+    </a>
+    <a href="javascript:void(0)" onclick="window.open(`https://wa.me/${WA_NUMBER}`, '_blank')" class="social-btn" title="WhatsApp" aria-label="Contáctanos por WhatsApp">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.458 5.704 1.459h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413"/>
+      </svg>
+    </a>
   </div>
 </footer>
 
 <script>
+  const RECIPES_DATA = {
+    r1: {
+      title: "Arroz con Menestra",
+      time: "25 minutos",
+      portions: "4 porciones",
+      ingredients: {
+        "Para el arroz": [
+          "2 tazas de arroz Risobela",
+          "4 tazas de agua",
+          "1 cucharada de aceite",
+          "1 cucharadita de sal"
+        ],
+        "Para la menestra": [
+          "2 tazas de lenteja cocida",
+          "1 cebolla paiteña picada",
+          "1 tomate picado",
+          "1 pimiento verde picado",
+          "2 dientes de ajo triturados",
+          "1 cucharadita de comino",
+          "1 cucharadita de achiote",
+          "2 cucharadas de aceite",
+          "Sal y pimienta al gusto"
+        ],
+        "Acompañamiento": [
+          "Plátano maduro frito",
+          "Aguacate",
+          "Carne asada (opcional)"
+        ]
+      },
+      preparation: [
+        {
+          step: "1. Cocinar el arroz",
+          details: [
+            "Lava el arroz Risobela hasta que el agua salga clara.",
+            "En una olla, agrega el aceite y sofríe ligeramente el arroz.",
+            "Añade el agua y la sal.",
+            "Cocina a fuego medio hasta que el agua se reduzca.",
+            "Baja el fuego al mínimo, tapa la olla y cocina por 15 minutos más."
+          ]
+        },
+        {
+          step: "2. Preparar la menestra",
+          details: [
+            "En una sartén a fuego medio, sofríe la cebolla, el ajo y el pimiento con el achiote.",
+            "Agrega el tomate picado y cocina por 3 minutos.",
+            "Incorpora las lentejas cocidas.",
+            "Añade comino, sal y pimienta al gusto.",
+            "Cocina a fuego bajo durante 10 minutos hasta que espese y tome consistencia."
+          ]
+        },
+        {
+          step: "3. Servir",
+          details: [
+            "Sirve una generosa porción de arroz Risobela caliente junto a la menestra.",
+            "Acompaña con rodajas de plátano maduro frito, aguacate y carne asada si lo deseas."
+          ]
+        }
+      ]
+    },
+    r2: {
+      title: "Arroz Verde",
+      time: "35 minutos",
+      portions: "4 porciones",
+      ingredients: {
+        "Para el arroz verde": [
+          "2 tazas de arroz Risobela",
+          "1 taza de cilantro fresco picado",
+          "1/2 taza de hojas de espinaca fresca",
+          "2 tazas de caldo de verduras o agua",
+          "2 dientes de ajo picados",
+          "1/2 cebolla blanca picada",
+          "2 cucharadas de aceite o mantequilla",
+          "Sal al gusto"
+        ]
+      },
+      preparation: [
+        {
+          step: "1. Licuar la base verde",
+          details: [
+            "Licúa el cilantro y la espinaca con una taza de caldo o agua hasta obtener un líquido verde homogéneo."
+          ]
+        },
+        {
+          step: "2. Hacer el refrito",
+          details: [
+            "Calienta el aceite o mantequilla en una olla y sofríe la cebolla y el ajo hasta que estén transparentes."
+          ]
+        },
+        {
+          step: "3. Sofreír el arroz",
+          details: [
+            "Agrega el arroz Risobela seco a la olla y sofríelo por 2 minutos, mezclándolo bien con el refrito."
+          ]
+        },
+        {
+          step: "4. Cocinar",
+          details: [
+            "Vierte el líquido verde licuado y la taza de caldo restante. Agrega sal a tu gusto.",
+            "Lleva a ebullición a fuego medio-alto.",
+            "Cuando el agua se reduzca, baja el fuego al mínimo, tapa la olla y cocina durante 15 minutos hasta que esté bien seco."
+          ]
+        }
+      ]
+    },
+    r3: {
+      title: "Arroz con Camarones",
+      time: "45 minutos",
+      portions: "4 a 6 porciones",
+      ingredients: {
+        "Para la preparación": [
+          "2 tazas de arroz Risobela ya cocinado",
+          "1 libra (450g) de camarones pelados y limpios",
+          "1 cebolla roja (paiteña) cortada en cubitos",
+          "1 pimiento verde picado",
+          "2 cucharadas de achiote",
+          "3 dientes de ajo machacados",
+          "1/2 taza de arvejas tiernas cocidas",
+          "1/2 taza de cilantro fresco picado",
+          "1 cucharadita de comino",
+          "Sal y pimienta al gusto"
+        ]
+      },
+      preparation: [
+        {
+          step: "1. Sazonar y saltear los camarones",
+          details: [
+            "Condimenta los camarones limpios con comino, ajo machacado, sal y pimienta.",
+            "En una sartén grande con una cucharada de achiote caliente, saltea los camarones por 3 minutos hasta que se vuelvan rosados. Retíralos de la sartén y guarda sus jugos."
+          ]
+        },
+        {
+          step: "2. Preparar el refrito aromático",
+          details: [
+            "En la misma sartén, vierte otra cucharada de achiote y sofríe la cebolla y el pimiento hasta que estén suaves."
+          ]
+        },
+        {
+          step: "3. Incorporar y unificar todo",
+          details: [
+            "Agrega el arroz Risobela cocido a la sartén junto con las arvejas y el cilantro.",
+            "Añade los camarones y los jugos que soltaron. Revuelve muy bien a fuego bajo por 5 minutos para que el arroz absorba todos los sabores.",
+            "Sirve de inmediato acompañado de patacones de plátano verde o maduro frito."
+          ]
+        }
+      ]
+    }
+  };
+
+  function openRecipe(id) {
+    const recipe = RECIPES_DATA[id];
+    if (!recipe) return;
+    
+    let ingredientsHtml = '';
+    for (const group in recipe.ingredients) {
+      ingredientsHtml += `
+        <div class="modal-ingredients-group">
+          <h5>${group}</h5>
+          <ul class="modal-ingredients-list">
+            ${recipe.ingredients[group].map(item => `<li>${item}</li>`).join('')}
+          </ul>
+        </div>
+      `;
+    }
+    
+    let prepHtml = '';
+    recipe.preparation.forEach(stepObj => {
+      prepHtml += `
+        <div class="modal-prep-step">
+          <div class="modal-prep-step-title">${stepObj.step}</div>
+          <ul class="modal-prep-step-details">
+            ${stepObj.details.map(detail => `<li>${detail}</li>`).join('')}
+          </ul>
+        </div>
+      `;
+    });
+    
+    const modalBody = document.querySelector('#recipe-modal .modal-body');
+    modalBody.innerHTML = `
+      <h3 class="modal-title">${recipe.title}</h3>
+      <div class="modal-meta">
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:4px"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> ${recipe.time}</span>
+        <span>${recipe.portions}</span>
+      </div>
+      
+      <h4 class="modal-section-title">Ingredientes</h4>
+      ${ingredientsHtml}
+      
+      <h4 class="modal-section-title">Preparación</h4>
+      ${prepHtml}
+    `;
+    
+    const modal = document.getElementById('recipe-modal');
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  
+  function closeRecipeModal() {
+    const modal = document.getElementById('recipe-modal');
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  
+  window.addEventListener('click', (e) => {
+    const modal = document.getElementById('recipe-modal');
+    if (e.target === modal) {
+      closeRecipeModal();
+    }
+  });
+
   function toggleMobileMenu() {
     const menu = document.getElementById('mobile-menu');
     const btn = document.querySelector('.nav-hamburger');
@@ -1240,5 +1644,16 @@
     });
   });
 </script>
+
+<!-- Recipe Modal -->
+<div id="recipe-modal" class="modal-overlay">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeRecipeModal()" aria-label="Cerrar">&times;</button>
+    <div class="modal-body">
+      <!-- populated dynamically via JS -->
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
