@@ -29,7 +29,14 @@
     --text:#2C180B;
     --text-muted:#6B5547;
   }
-  body{font-family:'Outfit',sans-serif;background:var(--white);color:var(--text);overflow-x:hidden}
+  body{
+    font-family:'Outfit',sans-serif;
+    background:var(--white);
+    color:var(--text);
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+  }
   
   /* NAV */
   nav{
@@ -161,10 +168,11 @@
   }
   .hero-subtitle{
     font-size:17px;
-    color:rgba(245,237,216,0.75);
+    color:rgba(245,237,216,0.85);
     line-height:1.8;
     max-width:460px;
     margin-bottom:40px;
+    font-weight:500;
   }
   .hero-btns{display:flex;gap:16px;flex-wrap:wrap}
   .btn-primary{
@@ -173,7 +181,7 @@
     padding:16px 36px;
     border-radius:30px;
     font-size:14px;
-    font-weight:600;
+    font-weight:700;
     text-decoration:none;
     letter-spacing:0.5px;
     transition:all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -207,10 +215,10 @@
     padding:16px 36px;
     border-radius:30px;
     font-size:14px;
-    font-weight:500;
+    font-weight:700;
     text-decoration:none;
     letter-spacing:0.5px;
-    border:1px solid rgba(245,237,216,0.35);
+    border:1px solid rgba(245,237,216,0.45);
     transition:all 0.3s ease;
     cursor:pointer;
   }
@@ -455,8 +463,8 @@
   }
   .producto-name{font-family:'Cormorant Garamond',serif;font-size:26px;color:var(--brown-dark);margin-bottom:10px;font-weight:600}
   .producto-card.featured .producto-name{color:var(--cream)}
-  .producto-peso{font-size:14px;color:var(--text-muted);margin-bottom:20px}
-  .producto-card.featured .producto-peso{color:rgba(245,237,216,0.65)}
+  .producto-peso{font-size:14px;color:var(--brown-dark);margin-bottom:20px;font-weight:600}
+  .producto-card.featured .producto-peso{color:var(--gold-light);font-weight:600}
   .producto-price{
     font-family:'Cormorant Garamond',serif;
     font-size:32px;
@@ -465,7 +473,7 @@
     transition:all 0.3s ease;
   }
   .producto-card.featured .producto-price{color:var(--gold)}
-  .producto-price span{font-size:16px;font-weight:400;font-style:italic}
+  .producto-price span{font-size:16px;font-weight:600;font-style:italic}
   
   .producto-btn{
     display:block;
@@ -565,7 +573,7 @@
     font-weight:600;
   }
   .receta-name{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--brown-dark);margin-bottom:10px;font-weight:600}
-  .receta-desc{font-size:14px;color:var(--text-muted);line-height:1.6}
+  .receta-desc{font-size:14px;color:var(--text-muted);line-height:1.6;font-weight:500}
 
   /* TESTIMONIOS */
   .testimonios{background:var(--brown-dark);padding:100px 80px;position:relative;overflow:hidden}
@@ -593,7 +601,7 @@
     box-shadow:0 15px 35px rgba(0,0,0,0.3);
   }
   .test-stars{color:var(--gold);font-size:18px;margin-bottom:16px;letter-spacing:2px}
-  .test-text{font-size:14.5px;color:rgba(245,237,216,0.85);line-height:1.8;font-style:italic;margin-bottom:24px}
+  .test-text{font-size:14.5px;color:rgba(245,237,216,0.85);line-height:1.8;font-style:italic;margin-bottom:24px;font-weight:500}
   .test-author{display:flex;align-items:center;gap:14px}
   .test-avatar{
     width:44px;
@@ -609,7 +617,7 @@
     box-shadow:0 4px 10px rgba(0,0,0,0.15);
   }
   .test-name{font-size:14.5px;color:var(--cream);font-weight:600}
-  .test-role{font-size:12px;color:rgba(245,237,216,0.5);margin-top:2px}
+  .test-role{font-size:12.5px;color:rgba(245,237,216,0.7);margin-top:2px;font-weight:500}
 
   /* CTA FINAL */
   .cta-final{
@@ -686,9 +694,9 @@
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
   }
-  .footer-text{font-size:13px;color:rgba(245,237,216,0.45);margin-top:8px;font-weight:300}
+  .footer-text{font-size:13.5px;color:rgba(245,237,216,0.7);margin-top:8px;font-weight:500}
   .footer-links{display:flex;gap:30px}
-  .footer-links a{font-size:13px;color:rgba(245,237,216,0.55);text-decoration:none;transition:all 0.3s ease;font-weight:500}
+  .footer-links a{font-size:13.5px;color:rgba(245,237,216,0.75);text-decoration:none;transition:all 0.3s ease;font-weight:600}
   .footer-links a:hover{color:var(--gold)}
   .footer-social{display:flex;gap:14px}
   .social-btn{
@@ -744,6 +752,7 @@
   #mobile-menu a { display: block; font-size: 16px; color: var(--cream); letter-spacing: 1px; padding: 14px 0; border-bottom: 1px solid rgba(212,175,55,0.1); text-decoration: none; text-transform: uppercase; }
 
   @media(max-width:768px){
+    body { font-weight: 500; }
     .nav-hamburger { display: flex; flex-direction: column; gap: 5px; }
     nav{padding:16px 20px}
     .nav-links{display:none}
