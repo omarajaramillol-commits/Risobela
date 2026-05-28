@@ -13,6 +13,7 @@
 <meta property="og:url" content="https://risobela.vercel.app">
 <meta property="og:site_name" content="Risobela - Arroz Premium Ecuatoriano">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   *{margin:0;padding:0;box-sizing:border-box}
@@ -1035,7 +1036,7 @@
   <div class="about-grid">
     <div class="about-img-wrap reveal">
       <div class="about-video-card">
-        <video src="videocampo.mp4" autoplay muted loop playsinline preload="none" class="about-video"></video>
+        <video data-src="videocampo.mp4" autoplay muted loop playsinline preload="none" class="about-video"></video>
         <div class="about-video-overlay"></div>
       </div>
       <div class="about-badge-float">
@@ -1203,7 +1204,7 @@
 
 <section class="cta-final reveal" id="contacto">
   <video autoplay muted loop playsinline preload="none" class="cta-video-bg">
-    <source src="videoarroz.mp4" type="video/mp4">
+    <source data-src="videoarroz.mp4" type="video/mp4">
   </video>
   <div style="position:relative; z-index:2;">
     <p class="section-label" style="color:rgba(61,28,2,0.55)">¿Listo para probarlo?</p>
@@ -1651,6 +1652,32 @@
         ticking = true;
       }
     });
+
+    // Lazy load videos using IntersectionObserver
+    const lazyVideos = [].slice.call(document.querySelectorAll("video.about-video, video.cta-video-bg"));
+    if ("IntersectionObserver" in window) {
+      const videoObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const video = entry.target;
+            const sources = video.querySelectorAll("source");
+            if (sources.length > 0) {
+              sources.forEach((source) => {
+                source.src = source.dataset.src;
+              });
+            } else if (video.dataset.src) {
+              video.src = video.dataset.src;
+            }
+            video.load();
+            videoObserver.unobserve(video);
+          }
+        });
+      }, { rootMargin: "0px 0px 200px 0px" });
+      
+      lazyVideos.forEach((video) => {
+        videoObserver.observe(video);
+      });
+    }
   });
 </script>
 
