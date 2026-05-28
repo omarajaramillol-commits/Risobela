@@ -9,7 +9,7 @@ while ($listener.IsListening) {
         $response = $context.Response
         
         $urlPath = $request.Url.LocalPath
-        if ($urlPath -eq "/") { $urlPath = "/risobela_landing_page.html" }
+        if ($urlPath -eq "/") { $urlPath = "/index.html" }
         
         $cleanPath = $urlPath.Replace("%20", " ").TrimStart('/')
         $localPath = Join-Path $PSScriptRoot $cleanPath
