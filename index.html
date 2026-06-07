@@ -1031,6 +1031,253 @@
     letter-spacing: 0.5px;
     display: inline-block;
   }
+
+  /* ============================================
+     PREMIUM ENHANCEMENTS v2
+     ============================================ */
+
+  /* Animated Marquee Trust Bar */
+  @keyframes trust-scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  .trust-bar { overflow: hidden; padding: 0 !important; position: relative; }
+  .trust-bar::before, .trust-bar::after {
+    content: ''; position: absolute; top: 0; height: 100%;
+    width: 80px; z-index: 2; pointer-events: none;
+  }
+  .trust-bar::before { left: 0;  background: linear-gradient(to right, #BF953F 0%, transparent 100%); }
+  .trust-bar::after  { right: 0; background: linear-gradient(to left,  #BF953F 0%, transparent 100%); }
+  .trust-marquee {
+    display: flex; width: max-content;
+    animation: trust-scroll 32s linear infinite;
+  }
+  .trust-marquee:hover { animation-play-state: paused; }
+  .trust-mitem {
+    display: flex; align-items: center; gap: 7px;
+    color: var(--brown-dark); font-size: 13.5px; font-weight: 700;
+    letter-spacing: 0.3px; padding: 17px 38px; white-space: nowrap;
+  }
+  .trust-msep {
+    width: 4px; height: 4px;
+    background: rgba(35,17,5,0.35);
+    border-radius: 50%; flex-shrink: 0;
+  }
+
+  /* Nav scroll effect */
+  nav { transition: padding 0.4s ease, box-shadow 0.4s ease; }
+  nav.nav-scrolled {
+    padding: 10px 40px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.45);
+  }
+
+  /* Hero grain + glow orbs */
+  .hero::after {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='nz'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23nz)'/%3E%3C/svg%3E");
+    opacity: 0.025; pointer-events: none; z-index: 3;
+  }
+  .hero-orb {
+    position: absolute; border-radius: 50%;
+    pointer-events: none; z-index: 1;
+  }
+  .orb-a {
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(201,151,58,0.1) 0%, transparent 70%);
+    filter: blur(60px); top: -200px; right: -150px;
+  }
+  .orb-b {
+    width: 450px; height: 450px;
+    background: radial-gradient(circle, rgba(82,39,11,0.14) 0%, transparent 70%);
+    filter: blur(80px); bottom: -80px; left: 60px;
+  }
+
+  /* EL PROCESO SECTION */
+  .proceso {
+    background: var(--brown-dark);
+    position: relative; overflow: hidden;
+  }
+  .proceso::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 0% 100%, rgba(201,151,58,0.07) 0%, transparent 55%),
+      radial-gradient(ellipse at 100% 0%,  rgba(184,124,76,0.06) 0%, transparent 55%);
+    pointer-events: none;
+  }
+  .proceso .section-label { color: var(--gold-light); }
+  .proceso .section-title { color: var(--cream); }
+  .proceso .section-sub   { color: rgba(245,237,216,0.6); margin: 0 auto; text-align: center; }
+  .proceso-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0; margin-top: 72px; position: relative;
+  }
+  .proceso-steps::before {
+    content: '';
+    position: absolute; top: 47px;
+    left: calc(16.666% + 20px); right: calc(16.666% + 20px);
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(212,175,55,0.3) 20%, rgba(212,175,55,0.3) 80%, transparent 100%);
+  }
+  .proceso-step {
+    display: flex; flex-direction: column;
+    align-items: center; text-align: center; padding: 0 32px;
+  }
+  .proceso-icon {
+    width: 96px; height: 96px; border-radius: 50%;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(212,175,55,0.2);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 30px; position: relative; z-index: 2;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .proceso-step:hover .proceso-icon {
+    border-color: rgba(212,175,55,0.5);
+    background: rgba(212,175,55,0.07);
+    box-shadow: 0 0 40px rgba(212,175,55,0.12);
+    transform: translateY(-5px);
+  }
+  .proceso-num {
+    position: absolute; top: -10px; right: -10px;
+    width: 28px; height: 28px;
+    background: var(--gold-gradient);
+    border-radius: 50%; font-size: 11px; font-weight: 800;
+    color: var(--brown-dark);
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  }
+  .proceso-step h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; color: var(--cream);
+    font-weight: 600; margin-bottom: 12px;
+  }
+  .proceso-step p {
+    font-size: 14px; color: rgba(245,237,216,0.58); line-height: 1.75;
+  }
+
+  /* TESTIMONIALS BENTO GRID */
+  .test-grid-bento {
+    display: grid;
+    grid-template-columns: 1.35fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 20px; margin-top: 54px;
+  }
+  .test-feat {
+    grid-row: span 2;
+    background: rgba(255,253,247,0.04);
+    border: 1px solid rgba(212,175,55,0.18);
+    border-radius: 16px; padding: 44px 38px;
+    display: flex; flex-direction: column; justify-content: space-between;
+    position: relative; overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .test-feat::before {
+    content: '\201C';
+    position: absolute; top: 12px; right: 26px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 160px; line-height: 1;
+    color: rgba(212,175,55,0.055);
+    pointer-events: none; font-style: italic;
+  }
+  .test-feat:hover {
+    background: rgba(255,253,247,0.07);
+    border-color: rgba(212,175,55,0.35);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+  }
+  .test-feat .test-text {
+    font-size: 17.5px; line-height: 1.9;
+    font-style: italic; flex: 1;
+    color: rgba(245,237,216,0.9); margin-bottom: 0;
+    display: flex; align-items: flex-start; padding-top: 4px;
+  }
+  .test-sm {
+    background: rgba(255,253,247,0.035);
+    border: 1px solid rgba(212,175,55,0.1);
+    border-radius: 16px; padding: 28px 30px;
+    position: relative; overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .test-sm::before {
+    content: '\201C';
+    position: absolute; top: 8px; right: 18px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 90px; line-height: 1;
+    color: rgba(212,175,55,0.045);
+    pointer-events: none; font-style: italic;
+  }
+  .test-sm:hover {
+    border-color: rgba(212,175,55,0.22);
+    background: rgba(255,253,247,0.065);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+  }
+  .test-sm .test-text {
+    font-size: 14px; color: rgba(245,237,216,0.8);
+    line-height: 1.75; font-style: italic; margin-bottom: 20px;
+  }
+
+  /* ENHANCED FOOTER v2 */
+  .footer-v2 {
+    background: #0C0400;
+    padding: 72px 80px 36px;
+    border-top: 1px solid rgba(212,175,55,0.08);
+  }
+  .footer-v2-grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr 1fr;
+    gap: 56px; margin-bottom: 48px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid rgba(245,237,216,0.05);
+  }
+  .fv2-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px; font-weight: 700; letter-spacing: 4px;
+    background: var(--gold-gradient);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    display: inline-block; margin-bottom: 16px;
+  }
+  .fv2-desc {
+    font-size: 13.5px; color: rgba(245,237,216,0.38);
+    line-height: 1.85; max-width: 260px; margin-bottom: 28px;
+  }
+  .fv2-col-title {
+    font-size: 10.5px; font-weight: 700;
+    letter-spacing: 2.5px; text-transform: uppercase;
+    color: rgba(212,175,55,0.65); margin-bottom: 22px;
+  }
+  .fv2-links { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .fv2-links a {
+    font-size: 13.5px; color: rgba(245,237,216,0.45);
+    text-decoration: none; font-weight: 500;
+    transition: all 0.3s ease; display: inline-block;
+  }
+  .fv2-links a:hover { color: var(--gold); transform: translateX(3px); }
+  .fv2-bottom {
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .fv2-copy { font-size: 12px; color: rgba(245,237,216,0.22); font-weight: 500; }
+
+  /* Producto card 3D */
+  .producto-card { transform-style: preserve-3d; will-change: transform; }
+
+  /* Responsive – nuevas secciones */
+  @media(max-width:768px){
+    nav.nav-scrolled { padding: 10px 20px; }
+    .proceso-steps { grid-template-columns: 1fr; gap: 48px; }
+    .proceso-steps::before { display: none; }
+    .proceso-step { padding: 0 16px; }
+    .test-grid-bento { grid-template-columns: 1fr; }
+    .test-feat { grid-row: span 1; }
+    .footer-v2 { padding: 50px 24px 32px; }
+    .footer-v2-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+    .fv2-bottom { flex-direction: column; gap: 20px; text-align: center; }
+    .fv2-desc { max-width: 100%; }
+  }
+  @media(max-width:480px){
+    .footer-v2-grid { grid-template-columns: 1fr; }
+  }
 </style>
 <script type="application/ld+json">
 {
@@ -1108,6 +1355,8 @@
 
 <section class="hero">
   <canvas id="rice-particles"></canvas>
+  <div class="hero-orb orb-a"></div>
+  <div class="hero-orb orb-b"></div>
   <div class="hero-content reveal">
     <span class="hero-badge" style="display:inline-flex;align-items:center;">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
@@ -1143,13 +1392,38 @@
 </section>
 
 <div class="trust-bar">
-  <div class="trust-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;color:var(--gold)"><polyline points="20 6 9 17 4 12"></polyline></svg> Envío a domicilio en Cuenca</div>
-  <div class="trust-dot"></div>
-  <div class="trust-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;color:var(--gold)"><polyline points="20 6 9 17 4 12"></polyline></svg> Calidad ecuatoriana premium</div>
-  <div class="trust-dot"></div>
-  <div class="trust-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;color:var(--gold)"><polyline points="20 6 9 17 4 12"></polyline></svg> Grano largo seleccionado</div>
-  <div class="trust-dot"></div>
-  <div class="trust-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;color:var(--gold)"><polyline points="20 6 9 17 4 12"></polyline></svg> Calidad que se nota en cada plato</div>
+  <div class="trust-marquee">
+    <!-- Set A -->
+    <div class="trust-mitem"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--brown-mid)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Envío a domicilio en Cuenca</div>
+    <div class="trust-msep"></div>
+    <div class="trust-mitem"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--brown-mid)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Calidad ecuatoriana premium</div>
+    <div class="trust-msep"></div>
+    <div class="trust-mitem"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--brown-mid)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Grano largo seleccionado electrónicamente</div>
+    <div class="trust-msep"></div>
+    <div class="trust-mitem"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--brown-mid)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Semilla certificada</div>
+    <div class="trust-msep"></div>
+    <div class="trust-mitem"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--brown-mid)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> 10+ años en el campo</div>
+    <div class="trust-msep"></div>
+    <div class="trust-mitem"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--brown-mid)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Directo del productor al hogar</div>
+    <div class="trust-msep"></div>
+    <div class="trust-mitem"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--brown-mid)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Envejecido naturalmente</div>
+    <div class="trust-msep"></div>
+    <!-- Set B (duplicate for seamless loop) -->
+    <div class="trust-mitem"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--brown-mid)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Envío a domicilio en Cuenca</div>
+    <div class="trust-msep"></div>
+    <div class="trust-mitem"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--brown-mid)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Calidad ecuatoriana premium</div>
+    <div class="trust-msep"></div>
+    <div class="trust-mitem"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--brown-mid)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Grano largo seleccionado electrónicamente</div>
+    <div class="trust-msep"></div>
+    <div class="trust-mitem"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--brown-mid)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Semilla certificada</div>
+    <div class="trust-msep"></div>
+    <div class="trust-mitem"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--brown-mid)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> 10+ años en el campo</div>
+    <div class="trust-msep"></div>
+    <div class="trust-mitem"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--brown-mid)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Directo del productor al hogar</div>
+    <div class="trust-msep"></div>
+    <div class="trust-mitem"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--brown-mid)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Envejecido naturalmente</div>
+    <div class="trust-msep"></div>
+  </div>
 </div>
 
 <section class="about" id="nosotros">
@@ -1271,33 +1545,37 @@
     <p class="section-label">Lo que dicen nuestros clientes</p>
     <h2 class="section-title">La familia Risobela crece</h2>
   </div>
-  <div class="test-grid reveal-stagger">
-    <div class="test-card">
-      <div class="test-stars-svg">
-        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+  <div class="test-grid-bento reveal-stagger">
+    <!-- Featured large card -->
+    <div class="test-feat">
+      <div>
+        <div class="test-stars-svg" style="margin-bottom:24px">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="test-text">"Desde que descubrí Risobela, ya no compro otra marca. El arroz queda perfectamente suelto, aromático, y con una textura que se nota diferente desde el primer bocado. Mi familia lo pide siempre."</p>
       </div>
-      <p class="test-text">"El arroz queda perfectamente suelto, sin que se pegue. En mi casa ya no compramos otra marca. Risobela es el de la familia."</p>
-      <div class="test-author">
-        <div class="test-avatar">AL</div>
+      <div class="test-author" style="margin-top:36px; padding-top:28px; border-top:1px solid rgba(212,175,55,0.12);">
+        <div class="test-avatar" style="width:52px;height:52px;font-size:16px;">AL</div>
         <div>
-          <div class="test-name">Aurelia Lapo</div>
+          <div class="test-name" style="font-size:16px;">Aurelia Lapo</div>
           <div class="test-role">Loja · Clienta frecuente</div>
         </div>
       </div>
     </div>
-    <div class="test-card">
-      <div class="test-stars-svg">
+    <!-- Small card 1 -->
+    <div class="test-sm">
+      <div class="test-stars-svg" style="margin-bottom:16px">
         <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
         <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
         <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
         <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
         <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
       </div>
-      <p class="test-text">"Lo pedí para mi restaurante y mis clientes lo notaron inmediatamente. La calidad del grano es superior. Lo recomiendo totalmente."</p>
+      <p class="test-text">"Lo pedí para mi restaurante y mis clientes lo notaron de inmediato. La calidad del grano es superior. Lo recomiendo totalmente."</p>
       <div class="test-author">
         <div class="test-avatar">MA</div>
         <div>
@@ -1306,15 +1584,16 @@
         </div>
       </div>
     </div>
-    <div class="test-card">
-      <div class="test-stars-svg">
+    <!-- Small card 2 -->
+    <div class="test-sm">
+      <div class="test-stars-svg" style="margin-bottom:16px">
         <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
         <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
         <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
         <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
         <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
       </div>
-      <p class="test-text">"Me gusta saber que es un producto ecuatoriano, hecho por una familia de verdad. El servicio de entrega es rápido y el precio justo."</p>
+      <p class="test-text">"Producto ecuatoriano de verdad, hecho con orgullo familiar. Entrega rápida y precio justo. No volvería a comprar otra marca."</p>
       <div class="test-author">
         <div class="test-avatar">MC</div>
         <div>
@@ -1322,6 +1601,40 @@
           <div class="test-role">Cuenca · Clienta</div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="proceso" style="padding:100px 80px">
+  <div style="text-align:center" class="reveal">
+    <p class="section-label">Cómo lo hacemos</p>
+    <h2 class="section-title">Del campo a tu mesa</h2>
+    <p class="section-sub">Cada paso está pensado para que recibas el arroz más puro y aromático del Ecuador.</p>
+  </div>
+  <div class="proceso-steps reveal-stagger">
+    <div class="proceso-step">
+      <div class="proceso-icon">
+        <span class="proceso-num">1</span>
+        <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+      </div>
+      <h3>Cultivo propio</h3>
+      <p>Semilla certificada en nuestras tierras. Controlamos cada etapa del cultivo para garantizar calidad desde la raíz.</p>
+    </div>
+    <div class="proceso-step">
+      <div class="proceso-icon">
+        <span class="proceso-num">2</span>
+        <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+      </div>
+      <h3>Selección electrónica</h3>
+      <p>Cada grano pasa por selección electrónica para eliminar impurezas y garantizar uniformidad perfecta de tamaño y color.</p>
+    </div>
+    <div class="proceso-step">
+      <div class="proceso-icon">
+        <span class="proceso-num">3</span>
+        <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </div>
+      <h3>Envejecido natural</h3>
+      <p>El proceso de envejecido realza el aroma y sabor únicos del arroz. Resultado: grano suelto, perfumado y de cocción perfecta.</p>
     </div>
   </div>
 </section>
@@ -1354,35 +1667,64 @@
   </div>
 </section>
 
-<footer>
-  <div>
-    <div class="footer-logo">RISOBELA</div>
-    <div class="footer-text">Arroz Premium Ecuatoriano · Hecho con orgullo familiar</div>
+<footer class="footer-v2">
+  <div class="footer-v2-grid">
+    <!-- Brand -->
+    <div>
+      <div class="fv2-logo">RISOBELA</div>
+      <p class="fv2-desc">Arroz premium ecuatoriano, cultivado con 10 años de pasión y seleccionado electrónicamente para garantizar excelencia en cada grano.</p>
+      <div class="footer-social">
+        <a href="https://www.tiktok.com/@risobela4?is_from_webapp=1&sender_device=pc" class="social-btn" target="_blank" rel="noopener noreferrer" title="TikTok" aria-label="TikTok">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.89-.6-4.09-1.5-.77-.6-1.39-1.39-1.81-2.3v7.8c.08 2.94-1.56 5.76-4.23 6.94-3.1 1.39-6.94.82-9.47-1.36-2.58-2.22-3.48-5.98-2.2-9.15C1.8 7.37 5.04 4.96 8.5 5.06c.02 1.43-.02 2.86.01 4.29-.87-.12-1.8.07-2.53.59-.97.71-1.4 1.95-1.12 3.14.28 1.19 1.25 2.12 2.45 2.31.75.12 1.54-.03 2.16-.48.67-.5 1.05-1.29 1.05-2.12V.02Z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/risobelaa?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="social-btn" target="_blank" rel="noopener noreferrer" title="Instagram" aria-label="Instagram">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+        </a>
+        <a href="javascript:void(0)" onclick="window.open(`https://wa.me/${WA_NUMBER}`, '_blank')" class="social-btn" title="WhatsApp" aria-label="WhatsApp">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.458 5.704 1.459h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413"/></svg>
+        </a>
+      </div>
+    </div>
+    <!-- Navegación -->
+    <div>
+      <div class="fv2-col-title">Navegación</div>
+      <ul class="fv2-links">
+        <li><a href="#nosotros">Nuestra historia</a></li>
+        <li><a href="#productos">Productos</a></li>
+        <li><a href="#recetas">Recetas</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </div>
+    <!-- Productos -->
+    <div>
+      <div class="fv2-col-title">Productos</div>
+      <ul class="fv2-links">
+        <li><a href="javascript:void(0)" onclick="window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent('Hola! Quiero el arroz Risobela 25lb')}`, '_blank')">Risobela 25 lb</a></li>
+        <li><a href="javascript:void(0)" onclick="window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent('Hola! Quiero el arroz Risobela 100lb')}`, '_blank')">Risobela 100 lb</a></li>
+        <li><a href="javascript:void(0)" onclick="window.open(`https://wa.me/${WA_NUMBER}?text=${WA_MSG}`, '_blank')">Precio mayorista</a></li>
+      </ul>
+    </div>
+    <!-- Contacto -->
+    <div>
+      <div class="fv2-col-title">Contacto</div>
+      <ul class="fv2-links">
+        <li><a href="javascript:void(0)" onclick="window.open(`https://wa.me/${WA_NUMBER}?text=${WA_MSG}`, '_blank')">WhatsApp directo</a></li>
+        <li><a href="https://www.instagram.com/risobelaa" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://www.tiktok.com/@risobela4" target="_blank" rel="noopener">TikTok</a></li>
+        <li><a href="#nosotros">Zona de entrega</a></li>
+      </ul>
+    </div>
   </div>
-  <div class="footer-links">
-    <a href="#nosotros">Nosotros</a>
-    <a href="#productos">Productos</a>
-    <a href="#recetas">Recetas</a>
-    <a href="#contacto">Contacto</a>
-  </div>
-  <div class="footer-social">
-    <a href="https://www.tiktok.com/@risobela4?is_from_webapp=1&sender_device=pc" class="social-btn" target="_blank" rel="noopener noreferrer" title="TikTok" aria-label="Síguenos en TikTok">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.89-.6-4.09-1.5-.77-.6-1.39-1.39-1.81-2.3v7.8c.08 2.94-1.56 5.76-4.23 6.94-3.1 1.39-6.94.82-9.47-1.36-2.58-2.22-3.48-5.98-2.2-9.15C1.8 7.37 5.04 4.96 8.5 5.06c.02 1.43-.02 2.86.01 4.29-.87-.12-1.8.07-2.53.59-.97.71-1.4 1.95-1.12 3.14.28 1.19 1.25 2.12 2.45 2.31.75.12 1.54-.03 2.16-.48.67-.5 1.05-1.29 1.05-2.12V.02Z"/>
-      </svg>
-    </a>
-    <a href="https://www.instagram.com/risobelaa?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="social-btn" target="_blank" rel="noopener noreferrer" title="Instagram" aria-label="Síguenos en Instagram">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-      </svg>
-    </a>
-    <a href="javascript:void(0)" onclick="window.open(`https://wa.me/${WA_NUMBER}`, '_blank')" class="social-btn" title="WhatsApp" aria-label="Contáctanos por WhatsApp">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.458 5.704 1.459h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413"/>
-      </svg>
-    </a>
+  <div class="fv2-bottom">
+    <p class="fv2-copy">© 2025 Risobela · Arroz Premium Ecuatoriano · Todos los derechos reservados.</p>
+    <div class="footer-social" style="gap:10px">
+      <a href="https://www.tiktok.com/@risobela4?is_from_webapp=1&sender_device=pc" class="social-btn" target="_blank" rel="noopener noreferrer" style="width:36px;height:36px" aria-label="TikTok">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.89-.6-4.09-1.5-.77-.6-1.39-1.39-1.81-2.3v7.8c.08 2.94-1.56 5.76-4.23 6.94-3.1 1.39-6.94.82-9.47-1.36-2.58-2.22-3.48-5.98-2.2-9.15C1.8 7.37 5.04 4.96 8.5 5.06c.02 1.43-.02 2.86.01 4.29-.87-.12-1.8.07-2.53.59-.97.71-1.4 1.95-1.12 3.14.28 1.19 1.25 2.12 2.45 2.31.75.12 1.54-.03 2.16-.48.67-.5 1.05-1.29 1.05-2.12V.02Z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/risobelaa?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="social-btn" target="_blank" rel="noopener noreferrer" style="width:36px;height:36px" aria-label="Instagram">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+      </a>
+    </div>
   </div>
 </footer>
 
@@ -1828,6 +2170,61 @@
 
     scrollTopBtn && scrollTopBtn.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+
+  // Nav scroll shrink
+  document.addEventListener("DOMContentLoaded", () => {
+    const nav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('nav-scrolled', window.scrollY > 60);
+    }, { passive: true });
+  });
+
+  // Animated stat counters
+  document.addEventListener("DOMContentLoaded", () => {
+    const statEls = document.querySelectorAll('.stat-num');
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const original = el.textContent.trim();
+        const numMatch = original.match(/\d+/);
+        if (!numMatch) { obs.unobserve(el); return; }
+        const target = parseInt(numMatch[0]);
+        const suffix = original.replace(/\d+/, '');
+        let startTime = null;
+        const duration = 1600;
+        const easeOut = t => 1 - Math.pow(1 - t, 4);
+        const tick = (ts) => {
+          if (!startTime) startTime = ts;
+          const prog = Math.min((ts - startTime) / duration, 1);
+          el.textContent = Math.round(easeOut(prog) * target) + suffix;
+          if (prog < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+        obs.unobserve(el);
+      });
+    }, { threshold: 0.6 });
+    statEls.forEach(el => obs.observe(el));
+  });
+
+  // 3D tilt on product cards (desktop only)
+  document.addEventListener("DOMContentLoaded", () => {
+    if (window.innerWidth < 768) return;
+    document.querySelectorAll('.producto-card').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const r = card.getBoundingClientRect();
+        const x = (e.clientX - r.left - r.width / 2) / (r.width / 2);
+        const y = (e.clientY - r.top  - r.height / 2) / (r.height / 2);
+        card.style.transform = `perspective(1200px) rotateX(${-y * 5}deg) rotateY(${x * 5}deg) translateY(-8px)`;
+        card.style.transition = 'transform 0.08s ease';
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+        card.style.transition = 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s, box-shadow 0.4s';
+        setTimeout(() => { card.style.transition = ''; }, 650);
+      });
     });
   });
 </script>
